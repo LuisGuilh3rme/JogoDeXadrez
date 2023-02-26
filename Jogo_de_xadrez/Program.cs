@@ -7,6 +7,7 @@ namespace Jogo_de_xadrez
     {
         static void Main(string[] args)
         {
+            Tela.MostrarTabuleiro(new Tabuleiro(8, 8));
         }
     }
 }

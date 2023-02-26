@@ -13,5 +13,10 @@ namespace Jogo_de_xadrez.tabuleiro
             Colunas = colunas;
             _pecas = new Peca[linhas, colunas];
         }
+
+        public Peca Peca(int linha, int coluna)
+        {
+            return _pecas[linha, coluna];
+        }
     }
 }
