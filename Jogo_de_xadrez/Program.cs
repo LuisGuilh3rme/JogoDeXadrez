@@ -7,8 +7,6 @@ namespace Jogo_de_xadrez
     {
         static void Main(string[] args)
         {
-            Posicao p = new(3, 4);
-            Console.WriteLine(p);
         }
     }
 }
