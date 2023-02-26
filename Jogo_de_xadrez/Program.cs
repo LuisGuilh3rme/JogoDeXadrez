@@ -8,17 +8,8 @@ namespace Jogo_de_xadrez
     {
         static void Main(string[] args)
         {
-            Tabuleiro tab = new(8, 8);
-            try
-            {
-                tab.ColocarPeca(new Torre(Cor.Preta, tab), new Posicao(0, 0));
-                tab.ColocarPeca(new Torre(Cor.Preta, tab), new Posicao(1, 3));
-                tab.ColocarPeca(new Rei(Cor.Preta, tab), new Posicao(0, 9));
-                Tela.MostrarTabuleiro(tab);
-            } catch (TabuleiroException e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            PosicaoXadrez pos = new('c', 7);
+            Console.WriteLine(pos.ConverterPosicao());
         }
     }
 }
