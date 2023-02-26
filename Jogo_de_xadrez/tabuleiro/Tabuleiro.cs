@@ -19,10 +19,37 @@ namespace Jogo_de_xadrez.tabuleiro
             return _pecas[linha, coluna];
         }
 
+        public Peca Peca(Posicao pos)
+        {
+            return _pecas[pos.Linha, pos.Coluna];
+        }
+
         public void ColocarPeca (Peca p, Posicao pos)
         {
+            if (ExistePeca(pos)) throw new TabuleiroException("Há peças se sobrepondo");
             _pecas[pos.Linha, pos.Coluna] = p;
             p.Posicao = pos;
+        }
+
+        public bool ExistePeca (Posicao pos)
+        {
+            ValidarPosicao(pos);
+            return Peca(pos) != null;
+        }
+
+        public bool VerificarPosicao(Posicao pos)
+        {
+            if (pos.Linha < 0 || pos.Linha >= Linhas) return false;
+            if (pos.Coluna < 0 || pos.Coluna >= Colunas) return false;
+            return true;
+        }
+
+        public void ValidarPosicao (Posicao pos)
+        {
+            if (!VerificarPosicao(pos))
+            {
+                throw new TabuleiroException("Há peças com posições inválidas");
+            }
         }
     }
 }
