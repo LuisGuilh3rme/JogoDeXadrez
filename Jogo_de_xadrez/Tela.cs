@@ -1,5 +1,6 @@
 ﻿using System;
 using Jogo_de_xadrez.tabuleiro;
+using Jogo_de_xadrez.Xadrez;
 
 namespace Jogo_de_xadrez
 {
@@ -35,6 +36,14 @@ namespace Jogo_de_xadrez
             }
             Console.Write(peca + " ");
             Console.ForegroundColor = aux;
+        }
+
+        public static PosicaoXadrez LerPosicaoXadrez()
+        {
+            string posicao = Console.ReadLine();
+            int linha = Convert.ToInt16(posicao[1] + " ");
+            char coluna = posicao[0];
+            return new PosicaoXadrez(coluna, linha);
         }
     }
 }

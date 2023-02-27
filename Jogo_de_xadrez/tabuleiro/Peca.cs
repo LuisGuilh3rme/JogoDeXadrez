@@ -15,5 +15,10 @@ namespace Jogo_de_xadrez.tabuleiro
             Tab = tabuleiro;
             QuantidadeMovimentos = 0;
         }
+
+        public void IncrementarMovimentos()
+        {
+            QuantidadeMovimentos++;
+        }
     }
 }

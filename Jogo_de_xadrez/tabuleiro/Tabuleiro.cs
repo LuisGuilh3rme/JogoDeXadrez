@@ -31,6 +31,15 @@ namespace Jogo_de_xadrez.tabuleiro
             p.Posicao = pos;
         }
 
+        public Peca RetirarPeca (Posicao pos)
+        {
+            Peca aux = Peca(pos);
+            if (aux == null) return null;
+            aux.Posicao = null;
+            _pecas[pos.Linha, pos.Coluna] = null;
+            return aux;
+        }
+
         public bool ExistePeca (Posicao pos)
         {
             ValidarPosicao(pos);
