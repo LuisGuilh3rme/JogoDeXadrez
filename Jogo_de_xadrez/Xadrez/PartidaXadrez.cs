@@ -36,12 +36,12 @@ namespace Jogo_de_xadrez.Xadrez
             Tab.ColocarPeca(new Torre(Cor.Branca, Tab), new PosicaoXadrez('e', 1).ConverterPosicao());
             Tab.ColocarPeca(new Rei(Cor.Branca, Tab), new PosicaoXadrez('d', 1).ConverterPosicao());
 
-            Tab.ColocarPeca(new Torre(Cor.Branca, Tab), new PosicaoXadrez('c', 7).ConverterPosicao());
-            Tab.ColocarPeca(new Torre(Cor.Branca, Tab), new PosicaoXadrez('c', 8).ConverterPosicao());
-            Tab.ColocarPeca(new Torre(Cor.Branca, Tab), new PosicaoXadrez('d', 7).ConverterPosicao());
-            Tab.ColocarPeca(new Torre(Cor.Branca, Tab), new PosicaoXadrez('e', 7).ConverterPosicao());
-            Tab.ColocarPeca(new Torre(Cor.Branca, Tab), new PosicaoXadrez('e', 8).ConverterPosicao());
-            Tab.ColocarPeca(new Rei(Cor.Branca, Tab), new PosicaoXadrez('d', 8).ConverterPosicao());
+            Tab.ColocarPeca(new Torre(Cor.Preta, Tab), new PosicaoXadrez('c', 7).ConverterPosicao());
+            Tab.ColocarPeca(new Torre(Cor.Preta, Tab), new PosicaoXadrez('c', 8).ConverterPosicao());
+            Tab.ColocarPeca(new Torre(Cor.Preta, Tab), new PosicaoXadrez('d', 7).ConverterPosicao());
+            Tab.ColocarPeca(new Torre(Cor.Preta, Tab), new PosicaoXadrez('e', 7).ConverterPosicao());
+            Tab.ColocarPeca(new Torre(Cor.Preta, Tab), new PosicaoXadrez('e', 8).ConverterPosicao());
+            Tab.ColocarPeca(new Rei(Cor.Preta, Tab), new PosicaoXadrez('d', 8).ConverterPosicao());
 
 
         }

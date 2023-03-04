@@ -28,11 +28,11 @@ namespace Jogo_de_xadrez
             ConsoleColor aux = Console.ForegroundColor;
             if (peca.Cor == Cor.Branca)
             {                
-                Console.ForegroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.White;
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Blue ; 
+                Console.ForegroundColor = ConsoleColor.Red; 
             }
             Console.Write(peca + " ");
             Console.ForegroundColor = aux;
