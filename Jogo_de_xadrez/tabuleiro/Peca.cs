@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Jogo_de_xadrez.tabuleiro
 {
-    public class Peca
+    public abstract class Peca
     {
         public Posicao Posicao { get; set; }
         public Cor Cor { get; protected set; }
@@ -20,5 +20,7 @@ namespace Jogo_de_xadrez.tabuleiro
         {
             QuantidadeMovimentos++;
         }
+
+        public abstract bool[,] MovimentosPossiveis();
     }
 }
