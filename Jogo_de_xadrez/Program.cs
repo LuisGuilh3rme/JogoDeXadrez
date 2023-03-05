@@ -11,20 +11,39 @@ namespace Jogo_de_xadrez
             PartidaXadrez partida = new();
             while (!partida.Terminada)
             {
-                Console.Clear();
-                Tela.MostrarTabuleiro(partida.Tab);
+                try
+                {
 
-                Console.Write("Origem: ");
-                Posicao origem = Tela.LerPosicaoXadrez().ConverterPosicao();
+                    Console.Clear();
+                    Tela.MostrarTabuleiro(partida.Tab);
 
-                bool[,] posicoesPossiveis = partida.Tab.Peca(origem).MovimentosPossiveis();
-                Console.Clear();
-                Tela.MostrarTabuleiro(partida.Tab, posicoesPossiveis);
+                    Console.WriteLine();
+                    Console.WriteLine("Turno: {0}", partida.Turno);
+                    Console.WriteLine("Aguardado jogada: Peças {0}s", partida.JogadorAtual);
+                    Console.WriteLine();
 
-                Console.Write("Destino: ");
-                Posicao destino = Tela.LerPosicaoXadrez().ConverterPosicao();
+                    Console.Write("Origem: ");
+                    Posicao origem = Tela.LerPosicaoXadrez().ConverterPosicao();
+                    partida.ValidarPosicaoOrigem(origem);
 
-                partida.ExecutarMovimento(origem, destino);
+
+                    bool[,] posicoesPossiveis = partida.Tab.Peca(origem).MovimentosPossiveis();
+                    Console.Clear();
+                    Tela.MostrarTabuleiro(partida.Tab, posicoesPossiveis);
+
+                    Console.Write("Destino: ");
+                    Posicao destino = Tela.LerPosicaoXadrez().ConverterPosicao();
+                    partida.ValidarPosicaoDestino(origem, destino);
+
+                    partida.RealizaJogada(origem, destino);
+                } catch(TabuleiroException e)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Erro: {0}", e.Message);
+                    Console.Write("Aperte qualquer botão para continuar");
+                    Console.ReadKey();
+                }
+
             }
 
         }

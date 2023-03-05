@@ -6,16 +6,16 @@ namespace Jogo_de_xadrez.Xadrez
     public class PartidaXadrez
     {
         public Tabuleiro Tab { get; private set; }
-        private int _turno;
-        private Cor _jogadorAtual;
+        public int Turno { get; private set; }
+        public Cor JogadorAtual { get; private set; }
         public bool Terminada { get; private set; }
 
         public PartidaXadrez()
         {
             Tab = new(8, 8);
             Terminada = false;
-            _turno = 1;
-            _jogadorAtual = Cor.Branca;
+            Turno = 1;
+            JogadorAtual = Cor.Branca;
             ColocarPecas();
         }
 
@@ -26,7 +26,31 @@ namespace Jogo_de_xadrez.Xadrez
             Peca pCapturada = Tab.RetirarPeca(destino);
             Tab.ColocarPeca(pMovimentada, destino);
         }
+        public void RealizaJogada(Posicao origem, Posicao destino)
+        {
+            ExecutarMovimento(origem, destino);
+            Turno++;
+            MudarJogador();
+        }
 
+        public void ValidarPosicaoOrigem (Posicao pos)
+        {
+            Peca peca = Tab.Peca(pos);
+            if (peca == null) throw new TabuleiroException("Não há peças na posição de origem escolhida");
+            if (JogadorAtual != peca.Cor) throw new TabuleiroException("Escolha somente peças suas");
+            if (!peca.ExisteMovimentos()) throw new TabuleiroException("A peça de origem escolhida não pode se movimentar");
+        }
+
+        public void ValidarPosicaoDestino (Posicao origem, Posicao destino)
+        {
+            if (!Tab.Peca(origem).PodeMoverPosicao(destino)) throw new TabuleiroException("Movimento inválido");
+        }
+
+        public void MudarJogador()
+        {
+            if (JogadorAtual == Cor.Branca) JogadorAtual = Cor.Preta;
+            else JogadorAtual = Cor.Branca;
+        }
         private void ColocarPecas()
         {
             Tab.ColocarPeca(new Torre(Cor.Branca, Tab), new PosicaoXadrez('c', 1).ConverterPosicao());
