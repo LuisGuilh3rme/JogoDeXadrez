@@ -15,12 +15,7 @@ namespace Jogo_de_xadrez
                 {
 
                     Console.Clear();
-                    Tela.MostrarTabuleiro(partida.Tab);
-
-                    Console.WriteLine();
-                    Console.WriteLine("Turno: {0}", partida.Turno);
-                    Console.WriteLine("Aguardado jogada: Peças {0}s", partida.JogadorAtual);
-                    Console.WriteLine();
+                    Tela.ExibirPartida(partida);
 
                     Console.Write("Origem: ");
                     Posicao origem = Tela.LerPosicaoXadrez().ConverterPosicao();
