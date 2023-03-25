@@ -62,26 +62,37 @@ namespace Jogo_de_xadrez
 
         public static void MostrarTabuleiro(Tabuleiro tab)
         {
+            ConsoleColor aux = Console.ForegroundColor;
+
             for (int i = 0; i < tab.Linhas; i++)
             {
-                Console.Write(8 - i + " ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write(8 - i + " |");
+                Console.ForegroundColor = aux;
+
                 for (int j = 0; j < tab.Colunas; j++)
                 {
                     ExibirPeca(tab.Peca(i, j));
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine("  a b c d e f g h");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("    a  b  c  d  e  f  g  h");
+            Console.ForegroundColor = aux;
         }
 
         public static void MostrarTabuleiro(Tabuleiro tab, bool[,] mat)
         {
+            ConsoleColor aux = Console.ForegroundColor;
             ConsoleColor fundoOriginal = Console.BackgroundColor;
             ConsoleColor fundoEscuro = ConsoleColor.DarkGray;
 
             for (int i = 0; i < tab.Linhas; i++)
             {
-                Console.Write(8 - i + " ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write(8 - i + " |");
+                Console.ForegroundColor = aux;
+
                 for (int j = 0; j < tab.Colunas; j++)
                 {
                     if (mat[i, j]) Console.BackgroundColor = fundoEscuro;
@@ -91,12 +102,14 @@ namespace Jogo_de_xadrez
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine("  a b c d e f g h");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("    a  b  c  d  e  f  g  h");
+            Console.ForegroundColor = aux;
         }
 
         public static void ExibirPeca(Peca peca)
         {
-            if (peca == null) Console.Write("- ");
+            if (peca == null) Console.Write(" - ");
             else
             {
                 ConsoleColor aux = Console.ForegroundColor;
@@ -108,7 +121,7 @@ namespace Jogo_de_xadrez
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                 }
-                Console.Write(peca + " ");
+                Console.Write(" {0} ", peca);
                 Console.ForegroundColor = aux;
             }
         }

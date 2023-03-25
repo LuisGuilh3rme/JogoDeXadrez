@@ -13,14 +13,8 @@ namespace Jogo_de_xadrez.Xadrez
             Linha = linha;
         }
 
-        public Posicao ConverterPosicao()
-        {
-            return new Posicao(8 - Linha, Coluna - 'a');
-        }
+        public Posicao ConverterPosicao() => new Posicao(8 - Linha, Coluna - 'a');
 
-        public override string ToString()
-        {
-            return $"{Coluna}{Linha}";
-        }
+        public override string ToString() => $"{Coluna}{Linha}";
     }
 }

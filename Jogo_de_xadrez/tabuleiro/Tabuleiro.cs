@@ -14,15 +14,9 @@ namespace Jogo_de_xadrez.tabuleiro
             _pecas = new Peca[linhas, colunas];
         }
 
-        public Peca Peca(int linha, int coluna)
-        {
-            return _pecas[linha, coluna];
-        }
+        public Peca Peca(int linha, int coluna) => _pecas[linha, coluna];
 
-        public Peca Peca(Posicao pos)
-        {
-            return _pecas[pos.Linha, pos.Coluna];
-        }
+        public Peca Peca(Posicao pos) => _pecas[pos.Linha, pos.Coluna];
 
         public void ColocarPeca (Peca p, Posicao pos)
         {

@@ -5,20 +5,14 @@ namespace Jogo_de_xadrez.Xadrez
 {
     public class Rei : Peca
     {
-        public Rei (Cor cor, Tabuleiro tabuleiro) : base(cor, tabuleiro)
-        {
+        public Rei (Cor cor, Tabuleiro tabuleiro) : base(cor, tabuleiro) { }
 
-        }
-
-        public override string ToString()
-        {
-            return "R";
-        }
+        public override string ToString() => "R";
 
         private bool PodeMover (Posicao pos)
         {
             Peca p = Tab.Peca(pos.Linha, pos.Coluna);
-            return p == null || p.Cor != this.Cor;
+            return p == null || p.Cor != Cor;
         }
 
         public override bool[,] MovimentosPossiveis()

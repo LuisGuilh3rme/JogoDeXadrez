@@ -39,10 +39,7 @@ namespace Jogo_de_xadrez.tabuleiro
             return false;
         }
 
-        public bool PodeMoverPosicao(Posicao pos)
-        {
-            return MovimentosPossiveis()[pos.Linha, pos.Coluna];
-        }
+        public bool PodeMoverPosicao(Posicao pos) => MovimentosPossiveis()[pos.Linha, pos.Coluna];
 
         public abstract bool[,] MovimentosPossiveis();
     }
