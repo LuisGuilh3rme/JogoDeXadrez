@@ -8,6 +8,7 @@ namespace Jogo_de_xadrez
     {
         static void Main(string[] args)
         {
+
             PartidaXadrez partida = new();
             while (!partida.Terminada)
             {
@@ -31,16 +32,17 @@ namespace Jogo_de_xadrez
                     partida.ValidarPosicaoDestino(origem, destino);
 
                     partida.RealizaJogada(origem, destino);
-                } catch(TabuleiroException e)
+                }
+                catch (TabuleiroException e)
                 {
                     Console.WriteLine();
                     Console.WriteLine("Erro: {0}", e.Message);
                     Console.Write("Aperte qualquer botão para continuar");
                     Console.ReadKey();
                 }
-
             }
-
+            Console.Clear();
+            Tela.ExibirPartida(partida);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Jogo_de_xadrez.tabuleiro;
 using Jogo_de_xadrez.Xadrez;
 
@@ -13,6 +14,14 @@ namespace Jogo_de_xadrez
             ExibirPecasCapturadas(partida);
             Console.WriteLine();
             Console.WriteLine("Turno: {0}", partida.Turno);
+
+            if (partida.Terminada)
+            {
+                Console.WriteLine("Xeque-Mate!");
+                Console.WriteLine("Vencedor: " + partida.JogadorAtual);
+                return;
+            }
+
             Console.WriteLine("Aguardado jogada: Peças {0}s", partida.JogadorAtual);
             Console.WriteLine();
             if (partida.Xeque)
@@ -107,6 +116,13 @@ namespace Jogo_de_xadrez
         public static PosicaoXadrez LerPosicaoXadrez()
         {
             string posicao = Console.ReadLine();
+            Regex re = new ("[a-h]");
+
+            if (!re.IsMatch(posicao))
+            {
+                throw new TabuleiroException("Posição inválida");
+            }
+
             int linha = Convert.ToInt16(posicao[1] + " ");
             char coluna = posicao[0];
             return new PosicaoXadrez(coluna, linha);
