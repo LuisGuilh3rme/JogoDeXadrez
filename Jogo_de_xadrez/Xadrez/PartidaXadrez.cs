@@ -110,9 +110,6 @@ namespace Jogo_de_xadrez.Xadrez
                         else if (optPromocao == 4) promocao = new Cavalo(p.Cor, Tab);
                     } while (promocao == null);
 
-
-
-
                     Tab.ColocarPeca(promocao, destino);
                     _pecas.Add(promocao);
                 }

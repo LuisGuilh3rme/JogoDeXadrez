@@ -131,13 +131,16 @@ namespace Jogo_de_xadrez
             string posicao = Console.ReadLine();
             Regex re = new ("[a-h]");
 
-            if (!re.IsMatch(posicao))
+            if (!re.IsMatch(posicao) || posicao.Length > 2 || char.IsDigit(posicao[0]) || char.IsLetter(posicao[1]))
             {
                 throw new TabuleiroException("Posição inválida");
             }
 
-            int linha = Convert.ToInt16(posicao[1] + " ");
+            int linha = int.Parse(posicao[1] + " ");
             char coluna = posicao[0];
+
+            if (linha < 1 || linha > 8) throw new TabuleiroException("Posição inválida");
+
             return new PosicaoXadrez(coluna, linha);
         }
     }
