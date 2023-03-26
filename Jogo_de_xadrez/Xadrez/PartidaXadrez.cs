@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Jogo_de_xadrez.tabuleiro;
 
@@ -83,6 +84,40 @@ namespace Jogo_de_xadrez.Xadrez
                 DesfazMovimento(origem, destino, pCapturada);
                 throw new TabuleiroException("Você se colocou em xeque");
             }
+
+            Peca p = Tab.Peca(destino);
+
+            // Promoção de peão
+            if (p is Peao)
+            {
+                if ((p.Cor == Cor.Branca && destino.Linha == 0) || (p.Cor == Cor.Branca && destino.Linha == 7))
+                {
+                    p = Tab.RetirarPeca(destino);
+                    _pecas.Remove(p);
+                    Peca promocao = null;
+                    do
+                    {
+                        Console.WriteLine("PROMOÇÃO DO PEÃO");
+                        Console.WriteLine("1 - Dama");
+                        Console.WriteLine("2 - Torre");
+                        Console.WriteLine("3 - Bispo");
+                        Console.WriteLine("4 - Cavalo");
+                        int.TryParse(Console.ReadLine(), out int optPromocao);
+
+                        if (optPromocao == 1) promocao = new Dama(p.Cor, Tab);
+                        else if (optPromocao == 2) promocao = new Torre(p.Cor, Tab);
+                        else if (optPromocao == 3) promocao = new Bispo(p.Cor, Tab);
+                        else if (optPromocao == 4) promocao = new Cavalo(p.Cor, Tab);
+                    } while (promocao == null);
+
+
+
+
+                    Tab.ColocarPeca(promocao, destino);
+                    _pecas.Add(promocao);
+                }
+            }
+
             if (ExisteXeque(Adversaria(JogadorAtual))) Xeque = true;
             else Xeque = false;
             if (ExisteXequeMate(Adversaria(JogadorAtual)))
@@ -92,8 +127,6 @@ namespace Jogo_de_xadrez.Xadrez
             }
             Turno++;
             MudarJogador();
-
-            Peca p = Tab.Peca(destino);
 
             // Jogada especial en passant
             if (p is Peao && (destino.Linha == origem.Linha - 2 || destino.Linha == origem.Linha + 2)) VulneravelEnPassant = p;
