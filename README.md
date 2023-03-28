@@ -37,10 +37,10 @@ O objetivo do xadrez é realizar xeque-mate ao rei adversário, para isso, o rei
 
 Existem algumas jogadas que podem ser realizadas durante o jogo:
 
-- Na primeira jogada de qualquer peão, ele pode se movimentar duas casas em vez de somente uma.
+- Na primeira jogada de qualquer peão, ele pode se movimentar em até duas casas em vez de uma.
 
 - Quando o peão está em sua primeira jogada, e realiza duas movimentações para frente, se houver um peão adversário ao seu lado, ele pode captura-lo fazendo uma jogada na diagonal no quadrado anterior em que o peão está posicionado.
 
 - A jogada roque pequeno consiste na troca de posições entre o rei e a torre ao seu lado, o rei anda duas posições a direita, e a torre duas posições a esquerda, só pode ocorrer se as posições para troca estiverem livres.
 
-- A jogada roque gradne consiste na troca de posições entre o rei e a torre ao lado da dama, o rei anda duas posições a esquerda, e a torre três posições a direita, só pode ocorrer se as posições para troca estiverem livres.
+- A jogada roque grande consiste na troca de posições entre o rei e a torre ao lado da dama, o rei anda duas posições a esquerda, e a torre três posições a direita, só pode ocorrer se as posições para troca estiverem livres.
